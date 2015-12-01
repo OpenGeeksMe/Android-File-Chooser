@@ -28,7 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private static final int INPUT_FILE_REQUEST_CODE = 1;
     private static final int FILECHOOSER_RESULTCODE = 1;
