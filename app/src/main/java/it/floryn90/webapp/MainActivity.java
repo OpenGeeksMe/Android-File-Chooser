@@ -130,7 +130,8 @@ public class MainActivity extends Activity {
             webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }
 
-        webView.loadUrl("file:///android_asset/index.html");
+        //webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl("http://postimage.org/");
     }
 
     private File createImageFile() throws IOException {
