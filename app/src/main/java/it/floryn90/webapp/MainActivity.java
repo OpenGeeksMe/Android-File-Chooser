@@ -117,6 +117,8 @@ public class MainActivity extends Activity {
 
         webView = (WebView) findViewById(R.id.webView);
         webSettings = webView.getSettings();
+        webSettings.setAppCacheEnabled(true);
+        webSettings.setCacheMode(webSettings.LOAD_CACHE_ELSE_NETWORK);
         webSettings.setJavaScriptEnabled(true);
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setAllowFileAccess(true);
@@ -131,7 +133,7 @@ public class MainActivity extends Activity {
         }
 
         //webView.loadUrl("file:///android_asset/index.html");
-        webView.loadUrl("http://postimage.org/");
+        webView.loadUrl("https://postimage.org/");
     }
 
     private File createImageFile() throws IOException {
@@ -224,7 +226,7 @@ public class MainActivity extends Activity {
                     imageStorageDir + File.separator + "IMG_"
                             + String.valueOf(System.currentTimeMillis())
                             + ".jpg");
-
+            Log.d("File", "File: " + file);
             mCapturedImageURI = Uri.fromFile(file);
 
             // Camera capture image intent
@@ -311,7 +313,7 @@ public class MainActivity extends Activity {
             if (progressDialog == null) {
                 progressDialog = new ProgressDialog(MainActivity.this);
                 progressDialog.setMessage("Loading...");
-                progressDialog.show();
+                progressDialog.hide();
             }
         }
 
