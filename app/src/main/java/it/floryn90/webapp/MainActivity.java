@@ -53,16 +53,19 @@ public class MainActivity extends Activity {
         }
 
         if (data != null || mCameraPhotoPath != null) {
-            ClipData images = data.getClipData();
-            Integer count = null;
-            if (images == null && data.getDataString() != null) {
-                count = data.getDataString().length();
-            } else if (images != null) {
-                count = images.getItemCount();
-            } else {
-                count = 1;
+            Integer count = 1;
+            ClipData images = null;
+            try {
+                images = data.getClipData();
+            }catch (Exception e) {
+                Log.e("Error!", e.getLocalizedMessage());
             }
 
+            if (images == null && data != null && data.getDataString() != null) {
+                    count = data.getDataString().length();
+            } else if (images != null) {
+                    count = images.getItemCount();
+            }
             Uri[] results = new Uri[count];
             // Check that the response is a good one
             if (resultCode == Activity.RESULT_OK) {
