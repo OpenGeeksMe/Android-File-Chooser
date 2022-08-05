@@ -12,7 +12,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -21,6 +20,8 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.core.app.ActivityCompat;
 
 import java.io.File;
 import java.io.IOException;
@@ -100,7 +101,7 @@ public class MainActivity extends Activity {
 
     public static void verifyStoragePermissions(Activity activity) {
         // Check if we have read or write permission
-        int writePermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int writePermission = ActivityCompat.checkSelfPermission(activity.getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int readPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);
         int cameraPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.CAMERA);
 
@@ -123,7 +124,6 @@ public class MainActivity extends Activity {
 
         webView = (WebView) findViewById(R.id.webView);
         webSettings = webView.getSettings();
-        webSettings.setAppCacheEnabled(true);
         webSettings.setCacheMode(webSettings.LOAD_CACHE_ELSE_NETWORK);
         webSettings.setJavaScriptEnabled(true);
         webSettings.setLoadWithOverviewMode(true);
